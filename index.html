@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="js/directive.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body ng-app="madLibsApp" ng-controller="userInputController">
+    <div id="header">
+      <div id="logo">
+        <img id="smiley" src="assets/mad-lib-happy-face.png"/>
+        <img src="assets/ng-mad-libs-logo.png"/>
+        <h1>Automate This!</h1>
+      </div>
+    </div>
+    <div id="userInputs">
+      <h1>Provide the following words:</h1>
+      <div class="selection">
+        <input placeholder={{initVals[0]}} ng-model="femaleName"/>
+        <input placeholder={{initVals[1]}} ng-model="jobTitle"/>
+        <input placeholder={{initVals[2]}} ng-model="tediousTask"/>
+      </div>
+      <div class="selection">
+        <input placeholder={{initVals[3]}} ng-model="dirtyTask"/>
+        <input placeholder={{initVals[4]}} ng-model="celebrity"/>
+        <input placeholder={{initVals[5]}} ng-model="uselessSkill"/>
+      </div>
+      <div class="selection">
+      <input placeholder={{initVals[6]}} ng-model="adjective"/>
+      <input placeholder={{initVals[7]}} ng-model="obnoxiousCelebrity"/>
+      <input placeholder={{initVals[8]}} ng-model="hugeNumber"/>
+      </div>
+    </div>
+    <div id="madLibResults">
+      <p>
+        <span ng-bind="femaleName || initVals[0]"></span> was a <span ng-bind="jobTitle || initVal[1]"></span> who loved technology. Although she loved parts of her job, she absolutely hated  <span ng-bind="tediousTask || initVals[2]"></span> and <span ng-bind="dirtyTask || initVals[3]"></span>. So, <span ng-bind="femaleName || initVals[0]"></span> met with her life mentor <span ng-bind="celebrity || initVals[4]"></span> who told her to learn how to <span ng-bind="uselessSkill || initVals[5]"></span> with Thinkful. Thinkful didn't offer a course on <span ng-bind="uselessSkill || initVals[5]"></span> so she studied programming instead.
+      </p>
+      <p>
+        What a great decision! With her new skills, <span ng-bind="femaleName || initVals[0]"></span> built a(n) <span ng-bind="adjective || initVals[6]"></span> robot named <span ng-bind="obnoxiousCelebrity || initVals[7]"></span> that not only loved <span ng-bind="dirtyTask || initVals[3]"></span> but did it <span ng-bind="hugeNumber || initVals[8]"></span> faster. 
+      </p>
+    </div>
+  </body>
+</html>

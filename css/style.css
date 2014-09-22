@@ -1,0 +1,33 @@
+div, img {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+span {
+  color: red;
+}
+
+#header, #smiley, #userInputs, #madLibResults {
+  border: 1px solid black;
+}
+
+#userInputs {
+  max-width: 1000px;
+}
+
+#madLibResults {
+  max-width: 1000px;
+}
+
+#header, h1 {
+  max-width: 1000px;
+}
+
+#smiley {
+  float: left;
+}
+
+#header {
+  padding-bottom: 6px;
+}
