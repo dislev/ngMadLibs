@@ -12,22 +12,14 @@ span {
   border: 1px solid black;
 }
 
-#userInputs {
-  max-width: 1000px;
+#container {
+  width: 680px;
 }
 
-#madLibResults {
-  max-width: 1000px;
-}
-
-#header, h1 {
-  max-width: 1000px;
+#header {
+  height: 200px;
 }
 
 #smiley {
   float: left;
-}
-
-#header {
-  padding-bottom: 6px;
 }
