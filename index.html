@@ -1,43 +1,50 @@
 <html>
   <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="https://code.angularjs.org/snapshot/angular.js"></script>
     <script src="js/app.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body ng-app="madLibsApp" ng-controller="userInputController">
-  <div id="container">
-    <div id="header">
-      <div id="logo">
-        <img id="smiley" src="assets/mad-lib-happy-face.png"/>
-        <img src="assets/ng-mad-libs-logo.png"/>
-        <h1>Automate This!</h1>
+    <div id="container" ng-submit="submitted=true;">
+      <div id="header">
+        <div id="logo">
+          <img id="smiley" src="assets/mad-lib-happy-face.png"/>
+          <img src="assets/ng-mad-libs-logo.png"/>
+          <h1>Automate This!</h1>
+        </div>
       </div>
-    </div>
-      <div id="userInputs">
+      <div id="userInputs" ng-hide="submitted">
         <h1>Provide the following words:</h1>
-        <div class="selection">
-          <input placeholder={{placeholder.femaleName}} ng-model="data.femaleName"/>
-          <input placeholder={{placeholder.jobTitle}} ng-model="data.jobTitle"/>
-          <input placeholder={{placeholder.tediousTask}} ng-model="data.tediousTask"/>
-        </div>
-        <div class="selection">
-          <input placeholder={{placeholder.dirtyTask}} ng-model="data.dirtyTask"/>
-          <input placeholder={{placeholder.celebrity}} ng-model="data.celebrity"/>
-          <input placeholder={{placeholder.uselessSkill}} ng-model="data.uselessSkill"/>
-        </div>
-        <div class="selection">
-        <input placeholder={{placeholder.adjective}} ng-model="data.adjective"/>
-        <input placeholder={{placeholder.obnoxiousCelebrity}} ng-model="data.obnoxiousCelebrity"/>
-        <input placeholder={{placeholder.hugeNumber}} ng-model="data.hugeNumber"/>
-        </div>
+        <form name="madLibInputForm" ng-controller="FormCtrl" ng-submit="submit()" novalidate>
+          <div class="selection">
+            <input type="text" placeholder={{placeholder.femaleName}} ng-model="data.femaleName" required />
+            <input type="text" placeholder={{placeholder.jobTitle}} ng-model="data.jobTitle" required />
+            <input type="text" placeholder={{placeholder.tediousTask}} ng-model="data.tediousTask" required />
+          </div>
+          <div class="selection">
+            <input type="text" placeholder={{placeholder.dirtyTask}} ng-model="data.dirtyTask" required />
+            <input type="text" placeholder={{placeholder.celebrity}} ng-model="data.celebrity" required />
+            <input type="text" placeholder={{placeholder.uselessSkill}} ng-model="data.uselessSkill" required />
+          </div>
+          <div class="selection">
+          <input type="text" placeholder={{placeholder.adjective}} ng-model="data.adjective" required />
+          <input type="text" placeholder={{placeholder.obnoxiousCelebrity}} ng-model="data.obnoxiousCelebrity" required />
+          <input type="number" name="hugeNumber" placeholder={{placeholder.hugeNumber}} ng-model="data.hugeNumber" required />
+          </div>
+          <hr>
+          <input ng-disabled="madLibInputForm.$invalid" id="submitButton" type="submit" value="Generate My Mad Lib">
+          <p ng-show="madLibInputForm.$invalid && madLibInputForm.$dirty">The form has missing values</p>
+          <p ng-show="madLibInputForm.hugeNumber.$error.number">You did not enter a valid number for a Huge Number field</p>
+        </form>
       </div>
-      <div id="madLibResults">
+      <div ng-show="submitted" id="madLibResults">
         <p>
           <span ng-bind="data.femaleName || placeholder.femaleName"></span> was a <span ng-bind="data.jobTitle || placeholder.jobTitle"></span> who loved technology. Although she loved parts of her job, she absolutely hated  <span ng-bind="data.tediousTask || placeholder.tediousTask"></span> and <span ng-bind="data.dirtyTask || placeholder.dirtyTask"></span>. So, <span ng-bind="data.femaleName || placeholder.femaleName"></span> met with her life mentor <span ng-bind="data.celebrity || placeholder.celebrity"></span> who told her to learn how to <span ng-bind="data.uselessSkill || placeholder.uselessSkill"></span> with Thinkful. Thinkful didn't offer a course on <span ng-bind="data.uselessSkill || placeholder.uselessSkill"></span> so she studied programming instead.
         </p>
         <p>
           What a great decision! With her new skills, <span ng-bind="data.femaleName || placeholder.femaleName"></span> built a(n) <span ng-bind="data.adjective || placeholder.adjective"></span> robot named <span ng-bind="data.obnoxiousCelebrity || placeholder.obnoxiousCelebrity"></span> that not only loved <span ng-bind="data.dirtyTask || placeholder.dirtyTask"></span> but did it <span ng-bind="data.hugeNumber || placeholder.hugeNumber"></span> faster. 
         </p>
+        <input type="button" value="Start Over" ng-click="reset()">
       </div>
     </div>
   </body>
