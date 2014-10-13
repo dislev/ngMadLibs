@@ -8,6 +8,10 @@ span {
   color: red;
 }
 
+form {
+  height: 30%;
+}
+
 #header, #smiley, #userInputs, #madLibResults {
   border: 1px solid black;
 }
@@ -22,4 +26,8 @@ span {
 
 #smiley {
   float: left;
+}
+
+#submitButton {
+  float: right;
 }
